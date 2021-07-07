@@ -21,6 +21,8 @@ public class Player {
     @OneToMany(mappedBy="player", fetch=FetchType.EAGER) //hace la relacion con game player
     Set<GamePlayer> gamePlayers = new HashSet<>();
 
+    @OneToMany(mappedBy="player", fetch=FetchType.EAGER) //
+    Set<Score> scores = new HashSet<>();
 
     public Player(){}
 
@@ -52,6 +54,10 @@ public class Player {
 
     public Long getId() {
         return id;
+    }
+
+    public Score getScore(Game game) {
+        return this.scores.stream().filter(score -> score.getGame().getId()== game.getId()).findFirst().orElse(null);
     }
 }
 

@@ -6,9 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class GamePlayer {
@@ -82,6 +80,20 @@ public class GamePlayer {
 
     public Set<Salvo> getSalvos() {
         return salvos;
+    }
+
+    public Map<String, Object> getScoreDto(){
+        Map<String , Object> dto =  new LinkedHashMap<>();
+        dto.put("player", this.getPlayer().getId());
+        Score score = this.getPlayer().getScore(this.getGame());
+        if(score != null){
+            dto.put("score",score.getScore());
+            dto.put("finishDate",score.getFinishDate());
+        }else {
+            dto.put("score",null);
+            dto.put("finishDate",null);
+        }
+        return dto;
     }
 
 }

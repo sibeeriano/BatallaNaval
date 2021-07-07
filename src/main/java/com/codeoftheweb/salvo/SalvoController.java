@@ -26,9 +26,12 @@ public class SalvoController {
 //estas son las urls y lo que muestran....
 
 
-    @RequestMapping("/games")
-    public Set<Map<String, Object>> getGames() {
-        return repository1.findAll().stream().map(this::gameDTO).collect(toSet());
+    @GetMapping(value = "/games")
+    public Map<String , Object> getListaGames(){
+        Map<String , Object> dto = new LinkedHashMap<>();
+        List<Game> games= repository1.findAll();
+        dto.put("games",games.stream().map(game -> gameDTO(game)).collect(Collectors.toList()));
+        return dto;
     }
 
     @GetMapping("/game_view/{n}")
@@ -64,6 +67,7 @@ public class SalvoController {
         dto.put("id", game.getId());
         dto.put("created", game.getCreationDate());
         dto.put("gamePlayers", game.getGamePlayers().stream().map(this::gamePlayerDTO).collect(toSet()));
+        dto.put("scores",game.getGamePlayers().stream().map(gp-> gp.getScoreDto()).collect(Collectors.toList()));
         return dto;
     }
 
