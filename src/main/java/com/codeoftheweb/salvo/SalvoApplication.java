@@ -18,11 +18,14 @@ public class SalvoApplication {
 		SpringApplication.run(SalvoApplication.class, args);
 	}
 
-
-@Bean
-public CommandLineRunner initData(PlayerRepository repository, GameRepository repository1, GamePlayerRepository repository2, ShipRepository repository3ship, SalvoRepository repository4salvo, ScoreRepository repository5scores) {
-	return (args) -> {
+	@Bean//usa el @component para que use el autowired y se creen las instancias/es lo primero que se va a ejecutar al inicio
+	//cuando spring encuentra estos metodos los ejecuta primero y guarda las instancias para autowired.
+	public CommandLineRunner initData(PlayerRepository repository, GameRepository repository1, GamePlayerRepository repository2, ShipRepository repository3ship, SalvoRepository repository4salvo, ScoreRepository repository5scores) {
+	//bean le dice a Spring que ejecute primero initData porque es de tipo line runner, crea y retorna la exprecion lambda. esa funcion hace los saves de lo que tenemos abajo...
+		return (args) -> {
 		//games
+
+
 		Game game1 = repository1.save(new Game(LocalDateTime.of(LocalDate.now(), LocalTime.now())));
 		Game game2 = repository1.save(new Game(LocalDateTime.of(LocalDate.now(), LocalTime.now().plusHours(1))));
 		Game game3 = repository1.save(new Game(LocalDateTime.of(LocalDate.now(), LocalTime.now().plusHours(2))));

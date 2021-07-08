@@ -1,5 +1,5 @@
 package com.codeoftheweb.salvo;
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.GenericGenerator; //Implementacion JPA que asigna tablas de datos
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 import javax.persistence.*;
@@ -11,20 +11,23 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 
-@Entity
+@Entity //le dice a spring que cree una tabla de Game para esta clase
 public class Game {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
-    private Long id;
+    @Id //contiene un id para esta clase en la data base
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native") //generador de id
+    @GenericGenerator(name = "native", strategy = "native") //generador id
+    private Long id; //le decimos al jpa que persista todas las variables de instancia como columnas en l abase de datos
 
     private LocalDateTime creationDate;
 
-    @OneToMany(mappedBy="game", fetch=FetchType.EAGER)
-    private Set<GamePlayer> gamePlayers = new HashSet<>();
 
-    @OneToMany(mappedBy="game", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy="game", fetch=FetchType.EAGER) //relacion uno a muchos/un juego para muchos jugadores/fetch le dice a jpa que cuando se cargue un juego se cargue el id del jugador.
+    private Set<GamePlayer> gamePlayers = new HashSet<>();// seteamos el propietario de la relacion.
+    //usamos set para que jpa no devuelva datos duplicados de las tablas de datos
+
+
+    @OneToMany(mappedBy="game", fetch=FetchType.EAGER) //un juego varios puntajes
     private Set<Score> scores = new HashSet<>();
 
 
@@ -61,14 +64,7 @@ public class Game {
         this.creationDate = creationDate;
     }
 
-    @Override
-    public String toString() {
-        return "Game{" +
-                "id=" + id +
-                ", creationDate=" + creationDate +
-                ", gamePlayers=" + gamePlayers +
-                '}';
-    }
+
 }
 
 
