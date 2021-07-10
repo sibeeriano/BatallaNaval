@@ -28,11 +28,11 @@ public CommandLineRunner initData(PlayerRepository repository, GameRepository re
 		Game game3 = repository1.save(new Game(LocalDateTime.of(LocalDate.now(), LocalTime.now().plusHours(2))));
 
 //Players
-		Player player1 =repository.save(new Player(" j.bauer@ctu.gov"));
-		Player player2 =repository.save(new Player(" c.obrian@ctu.gov"));
-		Player player3 =repository.save(new Player(" t.almeida@ctu.gov"));
-		Player player4 =repository.save(new Player(" j.bauer2@ctu.gov"));
-		Player player5 =repository.save(new Player(" d.palmer@whitehouse.gov"));
+		Player player1 =repository.save(new Player(" j.bauer@ctu.gov", "1234"));
+		Player player2 =repository.save(new Player(" c.obrian@ctu.gov", "12345"));
+		Player player3 =repository.save(new Player(" t.almeida@ctu.gov", "123456"));
+		Player player4 =repository.save(new Player(" j.bauer2@ctu.gov", "1234567"));
+		Player player5 =repository.save(new Player(" d.palmer@whitehouse.gov", "123456789"));
 
 //game1
 		GamePlayer gamePlayer1 = new GamePlayer(game1, player1);

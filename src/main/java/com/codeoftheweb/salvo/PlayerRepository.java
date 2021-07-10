@@ -10,7 +10,8 @@ import java.util.Date;
 
 
 public interface PlayerRepository extends JpaRepository<Player, Long> {
- //List<Player> findByCreationDate(Date date);
+ //Player findByUserName(@param("user")String user); //esto lo decia el ebook
+
 
 }
 

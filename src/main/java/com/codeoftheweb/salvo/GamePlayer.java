@@ -40,7 +40,7 @@ public class GamePlayer {
     public GamePlayer() {
     }
 
-    public GamePlayer(Game game, Player player/*, LocalDateTime creationDate*/) {
+    public GamePlayer(Game game, Player player) {
         this.game = game;
         this.player = player;
         this.creationDate = LocalDateTime.of(LocalDate.now(), LocalTime.now());
