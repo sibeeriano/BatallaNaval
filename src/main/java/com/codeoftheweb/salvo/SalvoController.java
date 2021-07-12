@@ -1,10 +1,11 @@
 package com.codeoftheweb.salvo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -22,15 +23,33 @@ public class SalvoController {
     private GameRepository repository1;
 
     @Autowired
+    private PlayerRepository repository;
+
+    @Autowired
     private GamePlayerRepository gamePlayerRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private ShipRepository repository3ship;
 //estas son las urls y lo que muestran....
 
 
     @GetMapping(value = "/games")
-    public Map<String , Object> getListaGames(){
+    public Map<String , Object> getListaGames(Authentication authentication){
         Map<String , Object> dto = new LinkedHashMap<>();
         List<Game> games= repository1.findAll();
-        dto.put("games",games.stream().map(game -> gameDTO(game)).collect(Collectors.toList()));
+        if(authentication != null){
+            Map<String , Object> dtoPlayer = new LinkedHashMap<>();
+            Player player = repository.findByUserName(authentication.getName());
+            dtoPlayer.put("id", player.getId());
+            dtoPlayer.put("email",player.getUserName());
+            dto.put("player",dtoPlayer);
+        }else{
+            dto.put("player","Guest");
+        }
+        dto.put("games",games.stream().map(game -> gameDTO( game)).collect(Collectors.toList()));
         return dto;
     }
 
@@ -43,6 +62,21 @@ public class SalvoController {
         dto.put("salvoes",game.getGamePlayers().stream().map(gp->gp.getSalvos()).flatMap(salvos -> salvos.stream())
                 .map(salvo -> salvoDTO(salvo)).collect(Collectors.toList()));
         return dto;
+    }
+
+    @RequestMapping(path = "/players", method = RequestMethod.POST)
+    public ResponseEntity<Object> register(@RequestParam String email, @RequestParam String password) {
+
+        if (email.isEmpty() || password.isEmpty()) {
+            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+        }
+
+        if (repository.findByUserName(email) !=  null) {
+            return new ResponseEntity<>("Name already in use", HttpStatus.FORBIDDEN);
+        }
+
+        repository.save(new Player(email, passwordEncoder.encode(password)));
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     private Map<String, Object> shipDTO(Ship ship) {
@@ -85,6 +119,12 @@ public class SalvoController {
         str.put("player", playerDTO(gp.getPlayer()));
         return str;
     }
+
+
+
+
+
+
 
 
     }

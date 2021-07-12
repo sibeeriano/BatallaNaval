@@ -2,6 +2,8 @@ package com.codeoftheweb.salvo;
 import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import net.minidev.json.annotate.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
@@ -65,6 +67,7 @@ public class Player {
     public Score getScore(Game game) {
         return this.scores.stream().filter(score -> score.getGame().getId()== game.getId()).findFirst().orElse(null);
     }
+
 
 
 }
