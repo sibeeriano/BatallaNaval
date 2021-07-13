@@ -1,4 +1,5 @@
 package com.codeoftheweb.salvo;
+import net.minidev.json.annotate.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
@@ -20,6 +21,7 @@ public class Game {
     private Long id;
 
     private LocalDateTime creationDate;
+
 
     @OneToMany(mappedBy="game", fetch=FetchType.EAGER)
     private Set<GamePlayer> gamePlayers = new HashSet<>();
@@ -61,6 +63,14 @@ public class Game {
         this.creationDate = creationDate;
     }
 
+    public Set<Score> getScores() {
+        return scores;
+    }
+
+    public void setScores(Set<Score> scores) {
+        this.scores = scores;
+    }
+
     @Override
     public String toString() {
         return "Game{" +
@@ -68,6 +78,14 @@ public class Game {
                 ", creationDate=" + creationDate +
                 ", gamePlayers=" + gamePlayers +
                 '}';
+
+
+    }
+
+
+    @JsonIgnore
+    public List<Player> getPlayers() {
+        return this.gamePlayers.stream().map(gamePlayer -> gamePlayer.getPlayer()).collect(Collectors.toList());
     }
 }
 
