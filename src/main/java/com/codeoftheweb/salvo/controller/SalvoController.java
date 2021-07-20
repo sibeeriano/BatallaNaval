@@ -224,8 +224,9 @@ public class SalvoController {
     }
 
 
-    /* TODO ESTO SE REEMPLAZO POR EL PACKAGE DTO
-//ShipDTO
+    /*
+
+//ShipDTO TODO ESTO SE REEMPLAZO POR EL PACKAGE DTO
     private Map<String, Object> shipDTO(Ship ship) {
         Map<String, Object> dto = new LinkedHashMap<String, Object>();
         dto.put("type", ship.getType());
