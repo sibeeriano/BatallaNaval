@@ -1,6 +1,10 @@
 body {
     background: url(../img/back2.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
     font-family: 'Dosis', sans-serif;
+
 }
 
 .bannerTitle {
@@ -389,6 +393,8 @@ button:focus {
 #currentPlayer {
     font-size: 1.2em;
     font-weight: 600;
+    color: #52667a;
+
 }
 
 .placeshipsInstructions {

@@ -1,19 +1,14 @@
 package com.codeoftheweb.salvo;
 
 
-import net.minidev.json.annotate.JsonIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.WebAttributes;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.Name;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -132,9 +127,36 @@ public class SalvoController {
     }
 
 
-
-
-
+    @PostMapping(path = "/games/players/{gamePlayerId}/ships")
+        public ResponseEntity<Map<String, Object>> placeShips(@PathVariable Long gamePlayerId, @RequestBody List<Ship> ships, Authentication authentication)
+    {
+        if (authentication.isAuthenticated()){
+            GamePlayer gamePlayer = gamePlayerRepository.findById(gamePlayerId).orElse(null);
+            if (gamePlayer != null) {
+                Player player = repository.findByUserName(authentication.getName());
+                if (player.getId() == gamePlayer.getPlayer().getId()){
+                    if(gamePlayer.getShips().size() == 0){
+                        if (ships.size() == 5){
+                            for (Ship ship: ships){
+                                repository3ship.save(new Ship(ship.getType(), ship.getLocations(), gamePlayer) );
+                            }
+                            return new ResponseEntity<>(makeMap("OK", "Barcos guardados correctamente"),HttpStatus.CREATED);
+                        } else {
+                            return new ResponseEntity<>(makeMap("error", "Tenes que poner 5 barcos!"), HttpStatus.FORBIDDEN);
+                        }
+                    } else {
+                        return new ResponseEntity<>(makeMap("error", "los barcos estan en posicion"), HttpStatus.FORBIDDEN);
+                    }
+                }else {
+                    return new ResponseEntity<>(makeMap("error", "No sos el usuario de esta cuenta"), HttpStatus.UNAUTHORIZED);
+                }
+            }else {
+                return new ResponseEntity<>(makeMap("error", "no existe el usuario"), HttpStatus.UNAUTHORIZED);
+            }
+        }else{
+                    return new ResponseEntity<>(makeMap("error", "Necesita loguearse"),HttpStatus.UNAUTHORIZED);
+                }
+        }
 
     @RequestMapping(path = "/players", method = RequestMethod.POST)
     public ResponseEntity<Object> register(@RequestParam String email, @RequestParam String password) {

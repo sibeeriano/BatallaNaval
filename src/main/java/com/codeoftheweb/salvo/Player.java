@@ -27,6 +27,9 @@ public class Player {
     @OneToMany(mappedBy="player", fetch=FetchType.EAGER) //
     Set<Score> scores = new HashSet<>();
 
+    @OneToMany(mappedBy="player", fetch=FetchType.EAGER) //
+    Set<Score> ships = new HashSet<>();
+
     public Player(){}
 
 
