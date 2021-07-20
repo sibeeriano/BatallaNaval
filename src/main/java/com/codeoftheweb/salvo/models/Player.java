@@ -1,15 +1,9 @@
-package com.codeoftheweb.salvo;
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
-import net.minidev.json.annotate.JsonIgnore;
+package com.codeoftheweb.salvo.models;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.*;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.Date;
 
 @Entity
 public class Player {
@@ -26,6 +20,9 @@ public class Player {
 
     @OneToMany(mappedBy="player", fetch=FetchType.EAGER) //
     Set<Score> scores = new HashSet<>();
+
+    @OneToMany(mappedBy="player", fetch=FetchType.EAGER) //
+    Set<Score> ships = new HashSet<>();
 
     public Player(){}
 

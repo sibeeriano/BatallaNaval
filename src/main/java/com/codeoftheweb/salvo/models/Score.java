@@ -1,6 +1,4 @@
-package com.codeoftheweb.salvo;
-import com.codeoftheweb.salvo.Game;
-import com.codeoftheweb.salvo.Player;
+package com.codeoftheweb.salvo.models;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.time.LocalDateTime;

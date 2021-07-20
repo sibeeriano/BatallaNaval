@@ -1,68 +1,59 @@
-package com.codeoftheweb.salvo;
+package com.codeoftheweb.salvo.models;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 
 
 @Entity
-public class Salvo {
+public class Ship {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
-    private int turn; //cree la variable para tipo de salvo
+    private String type; //cree la variable para tipo de barco
 
     @ElementCollection
-    @Column(name = "SalvoLocations") //es el nombre de la tabla de la base de datos
+    @Column(name = "ShipLocations") //es el nombre de la tabla de la base de datos
     private List<String> locations; //genera la lista de las locaciones
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "gamePlayer_id")
     private GamePlayer gamePlayer ;
 
-    public Salvo() {}
+    public Ship() {}
 
-    public Salvo(int turn, List<String> locations, GamePlayer gamePlayer) {
-        this.turn = turn;
+    public Ship(String type, List<String> locations, GamePlayer gamePlayer) {
+        this.type = type;
         this.locations = locations;
         this.gamePlayer = gamePlayer;
-
     }
 
-    public int getTurn() {
-        return turn;
+    public String getType() {
+        return type;
     }
-    public void setTurn(int type) {
-        this.turn = type;
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public List<String> getLocations() {
         return locations;
     }
+
     public void setLocations(List<String> locations) {
         this.locations = locations;
     }
 
-
     public GamePlayer getGamePlayer() {
         return gamePlayer;
     }
+
     public void setGamePlayer(GamePlayer gamePlayer) {
         this.gamePlayer = gamePlayer;
     }
-
-
-
 
     public Long getId() {
         return id;
@@ -70,11 +61,14 @@ public class Salvo {
 
 
 
-
-
-
-
+    /*public void AddShip(GamePlayer gamePlayer){
+        gamePlayer.setGame(this);
+        gamePlayers.add(gamePlayer);
+    }*/
 
 
 
 }
+
+
+

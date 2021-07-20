@@ -1,4 +1,4 @@
-package com.codeoftheweb.salvo;
+package com.codeoftheweb.salvo.models;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -82,18 +82,15 @@ public class GamePlayer {
         return salvos;
     }
 
-    public Map<String, Object> getScoreDto(){
-        Map<String , Object> dto =  new LinkedHashMap<>();
-        dto.put("player", this.getPlayer().getId());
+    public Score getScoreDto() {
+
         Score score = this.getPlayer().getScore(this.getGame());
-        if(score != null){
-            dto.put("score",score.getScore());
-            dto.put("finishDate",score.getFinishDate());
-        }else {
-            dto.put("score",null);
-            dto.put("finishDate",null);
+        if (score == null) {
+            score= new Score();
+            score.setPlayer(this.getPlayer());
+            score.setScore(0.0);
         }
-        return dto;
+        return score;
     }
 
 }
