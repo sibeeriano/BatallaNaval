@@ -11,7 +11,7 @@ public class SalvoDTO {
 
     private Long player;
 
-    private List<String> salvoLocations;
+    private List<String> locations;
 
     public SalvoDTO() {
     }
@@ -19,7 +19,7 @@ public class SalvoDTO {
     public SalvoDTO(Salvo salvo){
         this.turn = salvo.getTurn();
         this.player = salvo.getGamePlayer().getPlayer().getId();
-        this.salvoLocations = salvo.getSalvoLocations();
+        this.locations = salvo.getSalvoLocations();
     }
 
     public Long getPlayer() {
@@ -38,11 +38,11 @@ public class SalvoDTO {
         this.turn = turn;
     }
 
-    public List<String> getSalvoLocations() {
-        return salvoLocations;
+    public List<String> getLocations() {
+        return locations;
     }
 
-    public void setSalvoLocations(List<String> salvoLocations) {
-        this.salvoLocations = salvoLocations;
+    public void setLocations(List<String> locations) {
+        this.locations = locations;
     }
 }

@@ -5,6 +5,7 @@ import com.codeoftheweb.salvo.models.GamePlayer;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -27,14 +28,14 @@ public class GameViewDTO {
     public GameViewDTO() {
     }
 
-    public GameViewDTO(Game game, GamePlayer gamePlayer){
+    public GameViewDTO(Game game, GamePlayer gamePlayer, Map<String, Object> map){
         this.id = game.getId();
         this.created = game.getCreationDate();
-        this.gameState = "PLACESHIPS";
+        this.gameState = "PLAY";
         this.gamePlayers = game.getGamePlayers().stream().map(gp -> new GamePlayerDTO(gp)).collect(Collectors.toSet());
         this.ships = gamePlayer.getShips().stream().map(ship->new ShipDTO(ship)).collect(Collectors.toSet());
         this.salvoes = game.getGamePlayers().stream().map(gp -> gp.getSalvos()).flatMap(salvos -> salvos.stream()).map(salvo -> new SalvoDTO(salvo)).collect(Collectors.toSet());
-        this.hits = new HitDTO();
+        this.hits = new HitDTO(map);
     }
 
     public Long getId() {

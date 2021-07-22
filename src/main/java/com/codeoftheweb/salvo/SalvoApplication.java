@@ -76,21 +76,21 @@ public class SalvoApplication {
 				//**game 1**//
 
 //game1 ships player1
-				repository3ship.save(new Ship("Destroyer", List.of("H2", "H3", "H4"), gamePlayer1));
-				repository3ship.save(new Ship("Submarine", List.of("A4", "A5", "A6"), gamePlayer1));
-				repository3ship.save(new Ship("Carrier", List.of("B2", "B3", "B4", "B5", "B6"), gamePlayer1));
-				repository3ship.save(new Ship("Patrol", List.of("E2", "F2"), gamePlayer1));
-				repository3ship.save(new Ship("BattleShip", List.of("A7", "B7", "C7", "D7"), gamePlayer1));
+				repository3ship.save(new Ship(ShipType.DESTROYER, List.of("H2", "H3", "H4"), gamePlayer1));
+				repository3ship.save(new Ship(ShipType.SUBMARINE, List.of("A4", "A5", "A6"), gamePlayer1));
+				repository3ship.save(new Ship(ShipType.CARRIER, List.of("B2", "B3", "B4", "B5", "B6"), gamePlayer1));
+				repository3ship.save(new Ship(ShipType.PATROLBOAT, List.of("E2", "F2"), gamePlayer1));
+				repository3ship.save(new Ship(ShipType.BATTLESHIP, List.of("A7", "B7", "C7", "D7"), gamePlayer1));
 //game1 ships player2
-				repository3ship.save(new Ship("Destroyer", List.of("H2", "H3", "H4"), gamePlayer2));
-				repository3ship.save(new Ship("Submarine", List.of("A4", "A5", "A6"), gamePlayer2));
-				repository3ship.save(new Ship("Carrier", List.of("B2", "B3", "B4", "B5", "B6"), gamePlayer2));
-				repository3ship.save(new Ship("Patrol", List.of("E2", "F2"), gamePlayer2));
-				repository3ship.save(new Ship("BattleShip", List.of("A7", "B7", "C7", "D7"), gamePlayer2));
+				repository3ship.save(new Ship(ShipType.DESTROYER, List.of("H2", "H3", "H4"), gamePlayer2));
+				repository3ship.save(new Ship(ShipType.SUBMARINE, List.of("A4", "A5", "A6"), gamePlayer2));
+				repository3ship.save(new Ship(ShipType.CARRIER, List.of("B2", "B3", "B4", "B5", "B6"), gamePlayer2));
+				repository3ship.save(new Ship(ShipType.PATROLBOAT,List.of("E2", "F2"), gamePlayer2));
+				repository3ship.save(new Ship(ShipType.BATTLESHIP, List.of("A7", "B7", "C7", "D7"), gamePlayer2));
 
 //game1Salvoes
-				repository4salvo.save(new Salvo(1, List.of("H2", "H3", "H4", "B3", "B8"), gamePlayer1));
-				repository4salvo.save(new Salvo(1, List.of("E2", "B3", "J4", "A3", "D8"), gamePlayer2));
+				//repository4salvo.save(new Salvo(1, List.of("H2", "H3", "H4", "B3", "B8"), gamePlayer1));
+			//	repository4salvo.save(new Salvo(1, List.of("E2", "B3", "J4", "A3", "D8"), gamePlayer2));
 
 //score 1
 				repository5scores.save(new Score(player1, game1, 0, LocalDateTime.of(LocalDate.now(), LocalTime.now())));
@@ -99,17 +99,17 @@ public class SalvoApplication {
 				//**game 2**//
 
 //game2 ships player3
-				repository3ship.save(new Ship("Destroyer", List.of("H2", "I2", "J2"), gamePlayer3));
-				repository3ship.save(new Ship("Submarine", List.of("A4", "A5", "A6"), gamePlayer3));
-				repository3ship.save(new Ship("Carrier", List.of("C2", "C3", "C4", "C5", "C6"), gamePlayer3));
-				repository3ship.save(new Ship("Patrol", List.of("E9", "E10"), gamePlayer3));
-				repository3ship.save(new Ship("BattleShip", List.of("E10", "F10", "G10", "H10"), gamePlayer3));
+				repository3ship.save(new Ship(ShipType.DESTROYER, List.of("H2", "I2", "J2"), gamePlayer3));
+				repository3ship.save(new Ship(ShipType.SUBMARINE, List.of("A4", "A5", "A6"), gamePlayer3));
+				repository3ship.save(new Ship(ShipType.CARRIER, List.of("C2", "C3", "C4", "C5", "C6"), gamePlayer3));
+				repository3ship.save(new Ship(ShipType.PATROLBOAT, List.of("E9", "E10"), gamePlayer3));
+				repository3ship.save(new Ship(ShipType.BATTLESHIP, List.of("E10", "F10", "G10", "H10"), gamePlayer3));
 //game2 ships player4
-				repository3ship.save(new Ship("Destroyer", List.of("j2", "K2", "L2"), gamePlayer4));
-				repository3ship.save(new Ship("Submarine", List.of("J4", "J5", "J6"), gamePlayer4));
-				repository3ship.save(new Ship("Carrier", List.of("C2", "C3", "C4", "C5", "C6"), gamePlayer4));
-				repository3ship.save(new Ship("Patrol", List.of("H9", "H10"), gamePlayer4));
-				repository3ship.save(new Ship("BattleShip", List.of("B10", "C10", "D10", "E10"), gamePlayer4));
+				repository3ship.save(new Ship(ShipType.DESTROYER, List.of("j2", "K2", "L2"), gamePlayer4));
+				repository3ship.save(new Ship(ShipType.SUBMARINE, List.of("J4", "J5", "J6"), gamePlayer4));
+				repository3ship.save(new Ship(ShipType.CARRIER, List.of("C2", "C3", "C4", "C5", "C6"), gamePlayer4));
+				repository3ship.save(new Ship(ShipType.PATROLBOAT, List.of("H9", "H10"), gamePlayer4));
+				repository3ship.save(new Ship(ShipType.BATTLESHIP, List.of("B10", "C10", "D10", "E10"), gamePlayer4));
 
 //game2Salvoes
 				repository4salvo.save(new Salvo(1, List.of("C2", "I3", "D4", "F3", "E8"), gamePlayer3));
@@ -122,17 +122,17 @@ public class SalvoApplication {
 				//**game 3**//
 
 //game3 ships player3
-				repository3ship.save(new Ship("Destroyer", List.of("j2", "K2", "L2"), gamePlayer5));
-				repository3ship.save(new Ship("Submarine", List.of("J4", "J5", "J6"), gamePlayer5));
-				repository3ship.save(new Ship("Carrier", List.of("C2", "C3", "C4", "C5", "C6"), gamePlayer5));
-				repository3ship.save(new Ship("Patrol", List.of("H9", "H10"), gamePlayer5));
-				repository3ship.save(new Ship("BattleShip", List.of("B10", "C10", "D10", "E10"), gamePlayer5));
+				repository3ship.save(new Ship(ShipType.DESTROYER, List.of("j2", "K2", "L2"), gamePlayer5));
+				repository3ship.save(new Ship(ShipType.SUBMARINE, List.of("J4", "J5", "J6"), gamePlayer5));
+				repository3ship.save(new Ship(ShipType.CARRIER, List.of("C2", "C3", "C4", "C5", "C6"), gamePlayer5));
+				repository3ship.save(new Ship(ShipType.PATROLBOAT, List.of("H9", "H10"), gamePlayer5));
+				repository3ship.save(new Ship(ShipType.BATTLESHIP, List.of("B10", "C10", "D10", "E10"), gamePlayer5));
 //game3 ships player 4
-				repository3ship.save(new Ship("Destroyer", List.of("H2", "H3", "H4"), gamePlayer6));
-				repository3ship.save(new Ship("Submarine", List.of("A4", "A5", "A6"), gamePlayer6));
-				repository3ship.save(new Ship("Carrier", List.of("B2", "B3", "B4", "B5", "B6"), gamePlayer6));
-				repository3ship.save(new Ship("Patrol", List.of("E2", "F2"), gamePlayer6));
-				repository3ship.save(new Ship("BattleShip", List.of("A7", "B7", "C7", "D7"), gamePlayer6));
+				repository3ship.save(new Ship(ShipType.DESTROYER, List.of("H2", "H3", "H4"), gamePlayer6));
+				repository3ship.save(new Ship(ShipType.SUBMARINE, List.of("A4", "A5", "A6"), gamePlayer6));
+				repository3ship.save(new Ship(ShipType.CARRIER, List.of("B2", "B3", "B4", "B5", "B6"), gamePlayer6));
+				repository3ship.save(new Ship(ShipType.PATROLBOAT, List.of("E2", "F2"), gamePlayer6));
+				repository3ship.save(new Ship(ShipType.BATTLESHIP, List.of("A7", "B7", "C7", "D7"), gamePlayer6));
 
 //game3Salvos
 				repository4salvo.save(new Salvo(1, List.of("H2", "H3", "H4", "B3", "B8"), gamePlayer5));
