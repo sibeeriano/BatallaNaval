@@ -9,5 +9,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 public interface GamePlayerRepository extends JpaRepository<GamePlayer, Long> {
 
-   // List<Player> findByCreationDate(Date date);
+
 }

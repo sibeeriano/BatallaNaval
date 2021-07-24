@@ -78,7 +78,7 @@ public class SalvoController {
     }
 
 
-    //create game y nuevo jugador
+
     @PostMapping(path = "/game/{nn}/players")
     public ResponseEntity<Map<String, Object>> joinGame(@PathVariable Long nn, Authentication authentication) {
         Player playerAuthentication = getPlayer(authentication);
@@ -202,7 +202,7 @@ public class SalvoController {
     }
 
 
-    private Player getPlayer(Authentication authentication) { //verifica si hay algun player logueado
+    private Player getPlayer(Authentication authentication) {
         if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
             return null;
         } else {
@@ -232,114 +232,7 @@ public class SalvoController {
 
 
 
-    //tarea 10
-//
 
-
-
-    //
-  /*  private List<String> getHitLocations(GamePlayer gp, Salvo salvo) {
-
-        List<String> hitLocations = new ArrayList<>();
-        GamePlayer gpOpponent = getOpponent(gp.getGame(), gp.getPlayer()).get();
-        List<Ship> shipsOpponent = gpOpponent.getShips().stream().collect(Collectors.toList());
-        for (String salvoLocation : salvo.getSalvoLocations()) {
-            int i = 0;
-            boolean encontro = false;
-            while (i < shipsOpponent.size() && !encontro) {
-                int j = 0;
-                List<String> shipLocations = shipsOpponent.get(i).getLocations();
-                while (j < shipLocations.size() && !encontro) {
-                    if (salvoLocation.equals(shipLocations.get(j))) {
-                        hitLocations.add(salvoLocation);
-                        encontro = true;
-                    } else {
-                        j++;
-                    }
-                }
-                i++;
-            }
-        }
-        return hitLocations;
-    }*/
-
-
-    //
-
-
-
-
-    //agua
-
-
-
-    //esto guarda lo logica anterior por turnos
-
-
-
-    //hacer un if para cada estado ganar empatar perder play, place, waiting,
-
-
-
-
-
-
-
-
-
-
-
-    /*
-
-//ShipDTO TODO ESTO SE REEMPLAZO POR EL PACKAGE DTO
-    private Map<String, Object> shipDTO(Ship ship) {
-        Map<String, Object> dto = new LinkedHashMap<String, Object>();
-        dto.put("type", ship.getType());
-        dto.put("locations", ship.getLocations());
-        return dto;
-    }
-
-//salvoDTO
-
-        private Map<String, Object> salvoDTO(Salvo salvo) {
-        Map<String, Object> dto = new LinkedHashMap<String, Object>();
-        dto.put("turn", salvo.getTurn());
-        dto.put("player", salvo.getGamePlayer().getPlayer().getId());
-        dto.put("locations", salvo.getLocations());
-        return dto;
-    }
-//gameDTO
-    private Map<String, Object> gameDTO(Game game) {
-        Map<String, Object> dto = new LinkedHashMap<String, Object>();
-        dto.put("id", game.getId());
-        dto.put("created", game.getCreationDate());
-        dto.put("gameState", "PLACESHIPS");
-        dto.put("gamePlayers", game.getGamePlayers().stream().map(this::gamePlayerDTO).collect(toSet()));
-        dto.put("scores",game.getGamePlayers().stream().map(gp-> gp.getScoreDto()).collect(Collectors.toList()));
-        return dto;
-    }
-
-//playerDTO
-    private Map<String,Object> playerDTO(Player player){
-        Map<String, Object> str = new LinkedHashMap<String,Object>();
-        str.put("id", player.getId());
-        str.put("email", player.getUserName());
-        return str;
-    }
-//gamplayerDTO
-    private Map<String, Object> gamePlayerDTO(GamePlayer gp) {
-        Map<String, Object> str = new LinkedHashMap<String, Object>();
-        str.put("id", gp.getId());
-        str.put("player", playerDTO(gp.getPlayer()));
-        return str;
-    }
-
-
-
-
-
-
-*/
 
 
 

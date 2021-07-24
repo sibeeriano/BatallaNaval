@@ -56,7 +56,7 @@ import java.util.stream.Collectors;
         Optional<GamePlayer> gpOpponent = Util.getOpponent(gp.getGame(), gp.getPlayer());
         Map<String, Object> dto = new LinkedHashMap<>();
         if (gpOpponent.isPresent()) {
-            dto.put("self", getHitsDamages(gpOpponent.get()));             //pedimos el mapa y nos pasa en forma de dto
+            dto.put("self", getHitsDamages(gpOpponent.get()));
             dto.put("opponent", getHitsDamages(gp));
         } else {
             dto.put("self", new ArrayList<>());
@@ -67,10 +67,10 @@ import java.util.stream.Collectors;
 
     private List<Map<String, Object>> getHitsDamages(GamePlayer gp) {
         List<Map<String, Object>> map = new ArrayList<>();
-        int[] acumuladorDePosicion = new int[5]; //arreglo de tipo entero de 5 posiciones que se van a llenar con enteros, y cada posicion va a ser un barco
-        Arrays.fill(acumuladorDePosicion, 0, 4, 0); //inicializa el array en 0 para que no arranqeue como null
+        int[] acumuladorDePosicion = new int[5];
+        Arrays.fill(acumuladorDePosicion, 0, 4, 0);
         for (Salvo salvo : gp.getSalvos()) {
-            Map<String, Object> dto = new LinkedHashMap<>();//recorro todos los salvos y voy guardando la info en los dtos
+            Map<String, Object> dto = new LinkedHashMap<>();
             dto.put("turn", salvo.getTurn());
             List<String> hitsLocations = getHitLocations(gp, salvo);
             dto.put("hitLocations", hitsLocations);
@@ -97,7 +97,7 @@ import java.util.stream.Collectors;
         for (String location : hitsLocations) {
             int i = 0;
             boolean encontro = false;
-            while (i < ships.size() && !encontro) { //cantidad de barcos que tenemos
+            while (i < ships.size() && !encontro) {
                 int j = 0;
                 List<String> shipLocation = ships.get(i).getShipLocations();
                 while (j < shipLocation.size() && !encontro) {

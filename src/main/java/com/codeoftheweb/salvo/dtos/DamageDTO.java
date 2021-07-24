@@ -18,12 +18,12 @@ public class DamageDTO {
 
     public DamageDTO(Map<String , Object> map) {
 
-        this.carrierHits = (int) map.get("carrierHits"); //marca cuando te pegan por cada turno
+        this.carrierHits = (int) map.get("carrierHits");
         this.battleshipHits = (int) map.get("battleshipHits");
         this.submarineHits = (int) map.get("submarineHits");
         this.destroyerHits = (int) map.get("destroyerHits");
         this.patrolboatHits = (int) map.get("patrolboatHits");
-        this.carrier = (int) map.get("carrier"); //se acumulan los golpes para que se sigan mostrando
+        this.carrier = (int) map.get("carrier");
         this.battleship = (int) map.get("battleship");
         this.submarine = (int) map.get("submarine");
         this.destroyer =(int) map.get("destroyer");

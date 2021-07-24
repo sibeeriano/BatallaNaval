@@ -15,13 +15,13 @@ public class Player {
     private String userName;
     private String password;
 
-    @OneToMany(mappedBy="player", fetch=FetchType.EAGER) //hace la relacion con game player
+    @OneToMany(mappedBy="player", fetch=FetchType.EAGER)
     Set<GamePlayer> gamePlayers = new HashSet<>();
 
-    @OneToMany(mappedBy="player", fetch=FetchType.EAGER) //
+    @OneToMany(mappedBy="player", fetch=FetchType.EAGER)
     Set<Score> scores = new HashSet<>();
 
-    @OneToMany(mappedBy="player", fetch=FetchType.EAGER) //
+    @OneToMany(mappedBy="player", fetch=FetchType.EAGER)
     Set<Score> ships = new HashSet<>();
 
     public Player(){}

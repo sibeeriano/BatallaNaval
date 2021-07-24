@@ -13,11 +13,11 @@ public class Salvo {
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
-    private int turn; //cree la variable para tipo de salvo
+    private int turn;
 
     @ElementCollection
-    @Column(name = "SalvoLocations") //es el nombre de la tabla de la base de datos
-    private List<String> salvoLocations; //genera la lista de las locaciones
+    @Column(name = "SalvoLocations")
+    private List<String> salvoLocations;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "gamePlayer_id")

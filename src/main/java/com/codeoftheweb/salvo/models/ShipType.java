@@ -2,7 +2,7 @@ package com.codeoftheweb.salvo.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public enum ShipType { //el enum representa un grupo de constantes.
+public enum ShipType {
 
     @JsonProperty("carrier")
     CARRIER(0),
@@ -23,7 +23,5 @@ public enum ShipType { //el enum representa un grupo de constantes.
     private int getValue(){
         return value;
     }
-
-
 
 }

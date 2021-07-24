@@ -50,7 +50,7 @@ public class SalvoApplication {
 				Game game2 = repository1.save(new Game(LocalDateTime.of(LocalDate.now(), LocalTime.now().plusHours(1))));
 				Game game3 = repository1.save(new Game(LocalDateTime.of(LocalDate.now(), LocalTime.now().plusHours(2))));
 
-//Players//Player player1 = new Player("j.bauer@ctu.gov", passwordEncoder().encode("24"));
+//Players
 				Player player1 = repository.save(new Player("j.bauer@ctu.gov",passwordEncoder().encode("24")));
 				Player player2 = repository.save(new Player("c.obrian@ctu.gov", passwordEncoder().encode("42")));
 				Player player3 = repository.save(new Player("t.almeida@ctu.gov", passwordEncoder().encode("kb")));
@@ -162,8 +162,7 @@ class WebSecurityConfiguration extends GlobalAuthenticationConfigurerAdapter {
 			} else {
 				throw new UsernameNotFoundException("Unknown user: " + userName);
 			}
-		});//toma el usuario que ha ingresado para iniciar sesion, buscar en la base de datos con ese nombre
-		   //y devolver un objeto UserDetails con nombre, pass, permiso, etc.
+		});
 	}
 
 }
@@ -175,11 +174,11 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				//aca elegimos que paginas son publicas y cuales no
+
 				.antMatchers( "/web/**","/api/games","/api/players","/rest/**").permitAll()
 				.anyRequest().authenticated()
 				.and();
-		//metodos de configuracion que reemplazan and() y formLogin()
+
 		http.formLogin()
 				.usernameParameter("name") //
 				.passwordParameter("pwd") //
@@ -187,19 +186,19 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.logout().logoutUrl("/api/logout");
 
-		// deshabilita la comprobacion de CSRF tokens
+
 		http.csrf().disable();
 
-		// si el usuario no esta autorizado, enviar un fallo de autenticacion
+
 		http.exceptionHandling().authenticationEntryPoint((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
 
-		// si el login es exitoso limpiar los fallos de autenticacion
+
 		http.formLogin().successHandler((req, res, auth) -> clearAuthenticationAttributes(req));
 
-		//si el login falla, enviar un fallo de autenticacion
+
 		http.formLogin().failureHandler((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
 
-		// si el logout es exitoso, enviar una respuesta exitosa
+
 		http.logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());
 	}
 

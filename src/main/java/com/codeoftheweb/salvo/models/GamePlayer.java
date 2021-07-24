@@ -31,12 +31,6 @@ public class GamePlayer {
     private Set<Salvo> salvos =  new HashSet<>();
 
 
-
-   /* public void addShip(Ship ship){
-        ship.setGamePlayer(this);
-        ships.add(ship); //se agrega a la lista de ships
-    }*/
-
     public GamePlayer() {
     }
 

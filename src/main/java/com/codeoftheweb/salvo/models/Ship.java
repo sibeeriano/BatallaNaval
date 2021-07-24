@@ -13,11 +13,10 @@ public class Ship {
     @GenericGenerator(name = "native", strategy = "native")
     private Long id;
 
-    private ShipType type; //cree la variable para tipo de barco de tipo shiptype
-
+    private ShipType type;
     @ElementCollection
-    @Column(name = "ShipLocations") //es el nombre de la tabla de la base de datos
-    private List<String> shipLocations; //genera la lista de las locaciones
+    @Column(name = "ShipLocations")
+    private List<String> shipLocations;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "gamePlayer_id")
@@ -63,10 +62,7 @@ public class Ship {
         this.gamePlayer = gamePlayer;
     }
 
-/*public void AddShip(GamePlayer gamePlayer){
-        gamePlayer.setGame(this);
-        gamePlayers.add(gamePlayer);
-    }*/
+
 
 
 

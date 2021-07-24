@@ -29,16 +29,6 @@ public class GameViewDTO {
     public GameViewDTO() {
     }
 
-    /*public GameViewDTO(Game game, GamePlayer gamePlayer, Map<String, Object> map, State state){
-        this.id = game.getId();
-        this.created = game.getCreationDate();
-        this.gameState = state;
-        this.gamePlayers = game.getGamePlayers().stream().map(gp -> new GamePlayerDTO(gp)).collect(Collectors.toSet());
-        this.ships = gamePlayer.getShips().stream().map(ship->new ShipDTO(ship)).collect(Collectors.toSet());
-        this.salvoes = game.getGamePlayers().stream().map(gp -> gp.getSalvos()).flatMap(salvos -> salvos.stream()).map(salvo -> new SalvoDTO(salvo)).collect(Collectors.toSet());
-        this.hits = new HitDTO(map);
-    }*/
-
     public Long getId() {
         return id;
     }
