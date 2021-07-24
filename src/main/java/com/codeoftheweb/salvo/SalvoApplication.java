@@ -93,8 +93,8 @@ public class SalvoApplication {
 			//	repository4salvo.save(new Salvo(1, List.of("E2", "B3", "J4", "A3", "D8"), gamePlayer2));
 
 //score 1
-				repository5scores.save(new Score(player1, game1, 0, LocalDateTime.of(LocalDate.now(), LocalTime.now())));
-				repository5scores.save(new Score(player2, game1, 1, LocalDateTime.of(LocalDate.now(), LocalTime.now())));
+			//	repository5scores.save(new Score(player1, game1, 0, LocalDateTime.of(LocalDate.now(), LocalTime.now())));
+			//	repository5scores.save(new Score(player2, game1, 1, LocalDateTime.of(LocalDate.now(), LocalTime.now())));
 
 				//**game 2**//
 
@@ -116,8 +116,8 @@ public class SalvoApplication {
 				repository4salvo.save(new Salvo(1, List.of("B2", "D8", "G4", "F10", "C3"), gamePlayer4));
 
 //score game2
-				repository5scores.save(new Score(player3, game2, 0, LocalDateTime.of(LocalDate.now(), LocalTime.now())));
-				repository5scores.save(new Score(player4, game2, 1, LocalDateTime.of(LocalDate.now(), LocalTime.now())));
+			//	repository5scores.save(new Score(player3, game2, 0, LocalDateTime.of(LocalDate.now(), LocalTime.now())));
+			//	repository5scores.save(new Score(player4, game2, 1, LocalDateTime.of(LocalDate.now(), LocalTime.now())));
 
 				//**game 3**//
 
@@ -139,8 +139,8 @@ public class SalvoApplication {
 				repository4salvo.save(new Salvo(1, List.of("E2", "B3", "J4", "A3", "D8"), gamePlayer6));
 
 //score game3
-				repository5scores.save(new Score(player2, game3, 1, LocalDateTime.of(LocalDate.now(), LocalTime.now())));
-				repository5scores.save(new Score(player5, game3, 0, LocalDateTime.of(LocalDate.now(), LocalTime.now())));
+				//repository5scores.save(new Score(player2, game3, 1, LocalDateTime.of(LocalDate.now(), LocalTime.now())));
+			    //repository5scores.save(new Score(player5, game3, 0, LocalDateTime.of(LocalDate.now(), LocalTime.now())));
 
 			};
 		}

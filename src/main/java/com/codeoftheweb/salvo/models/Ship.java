@@ -17,7 +17,7 @@ public class Ship {
 
     @ElementCollection
     @Column(name = "ShipLocations") //es el nombre de la tabla de la base de datos
-    private List<String> locations; //genera la lista de las locaciones
+    private List<String> shipLocations; //genera la lista de las locaciones
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "gamePlayer_id")
@@ -25,9 +25,9 @@ public class Ship {
 
     public Ship() {}
 
-    public Ship(ShipType type, List<String> locations, GamePlayer gamePlayer) {
+    public Ship(ShipType type, List<String> shipLocations, GamePlayer gamePlayer) {
         this.type = type;
-        this.locations = locations;
+        this.shipLocations = shipLocations;
         this.gamePlayer = gamePlayer;
     }
 
@@ -47,12 +47,12 @@ public class Ship {
         this.type = type;
     }
 
-    public List<String> getLocations() {
-        return locations;
+    public List<String> getShipLocations() {
+        return shipLocations;
     }
 
-    public void setLocations(List<String> locations) {
-        this.locations = locations;
+    public void setShipLocations(List<String> shipLocations) {
+        this.shipLocations = shipLocations;
     }
 
     public GamePlayer getGamePlayer() {

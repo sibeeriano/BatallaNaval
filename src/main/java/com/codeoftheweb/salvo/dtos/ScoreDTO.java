@@ -1,4 +1,5 @@
 package com.codeoftheweb.salvo.dtos;
+import com.codeoftheweb.salvo.models.Game;
 import com.codeoftheweb.salvo.models.Score;
 
 import java.time.LocalDateTime;
@@ -10,6 +11,8 @@ public class ScoreDTO {
     private Double score;
 
     private LocalDateTime finishDate;
+
+
 
     public ScoreDTO() {
     }
@@ -28,11 +31,11 @@ public class ScoreDTO {
         this.player = player;
     }
 
-    public double getScore() {
+    public Double getScore() {
         return score;
     }
 
-    public void setScore(double score) {
+    public void setScore(Double score) {
         this.score = score;
     }
 

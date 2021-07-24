@@ -15,7 +15,7 @@ public class ShipDTO {
 
     public ShipDTO(Ship ship){
         this.type = ship.getType();
-        this.locations = ship.getLocations();
+        this.locations = ship.getShipLocations();
     }
 
     public ShipType getType() {
